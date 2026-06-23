@@ -22,6 +22,7 @@ return {
         ['<S-Tab>'] = { 'select_prev', 'fallback' },
         ['<C-y>'] = { 'select_and_accept' },
       },
+      sources = { default = { 'lsp', 'path', 'snippets', 'buffer' } },
     },
   },
 }

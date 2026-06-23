@@ -26,6 +26,7 @@ return {
           -- Git
           { '<leader>g', group = 'git', icon = { icon = '' } },
           { '<leader>gh', group = 'hunks' },
+          { '<leader>gd', group = 'diffview', icon = { icon = '' } },
           { '<leader>gg', group = 'lazy git', icon = { icon = '' } },
           -- Tools
           { '<leader>t', group = 'tools', icon = { icon = '' } },
@@ -54,15 +55,15 @@ return {
           -- Diagnostics/quickfix
           { '<leader>x', group = 'diagnostics/quickfix' },
           -- Explorer
-          { '<leader>e', group = 'explorer', icon = { icon = '' } },
+          { '<leader>e', icon = { icon = '' } },
           -- Navigation groups
           { '[', group = 'prev' },
           { ']', group = 'next' },
           { 'g', group = 'goto' },
           { 'z', group = 'fold' },
           -- Splits (icons defined here in spec)
-          { '<leader>|', icon = { icon = '' } },
-          { '<leader>_', icon = { icon = '' } },
+          { '<leader>|', icon = { icon = '' } },
+          { '<leader>_', icon = { icon = '' } },
           -- Hide stale kickstart base groups (overridden by our layout)
           { '<leader>h', hidden = true },
         },

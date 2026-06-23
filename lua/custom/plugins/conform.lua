@@ -65,6 +65,7 @@ return {
       end
 
       -- Autoformat on save: respects vim.g.autoformat / vim.b.autoformat
+      -- TODO: do we want this? is this working?
       opts.format_on_save = function(bufnr)
         -- Buffer-level toggle takes priority
         if vim.b[bufnr].autoformat == false then return nil end

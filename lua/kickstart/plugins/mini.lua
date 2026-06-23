@@ -26,6 +26,10 @@ return {
       -- - sr)'  - [S]urround [R]eplace [)] [']
       require('mini.surround').setup()
 
+      -- Auto-insert matching pairs: type `(` -> `()` with cursor inside.
+      -- Replaces nvim-autopairs (disabled in lazy-plugins.lua).
+      require('mini.pairs').setup()
+
       -- NOTE: mini.statusline disabled in favor of lualine (see custom/plugins/lualine.lua)
 
       -- ... and there is more!

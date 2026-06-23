@@ -25,8 +25,8 @@ return {
         diagnostics = 'nvim_lsp',
         offsets = {
           {
-            filetype = 'neo-tree',
-            -- text = 'Explorer',
+            filetype = 'snacks_layout_box',
+            text = 'Explorer',
             highlight = 'Directory',
             separator = true,
           },
