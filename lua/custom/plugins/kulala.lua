@@ -7,7 +7,8 @@ return {
     'mistweaverco/kulala.nvim',
     ft = 'http',
     opts = {
-      display_mode = 'float',
+      display_mode = 'split',
+      split_direction = 'right',
       winbar = true,
       default_env = 'dev',
       request_timeout = 30000,

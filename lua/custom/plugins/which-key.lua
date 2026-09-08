@@ -35,6 +35,7 @@ return {
           { '<leader>s', group = 'settings', icon = { icon = '' } },
           { '<leader>su', group = 'ui', icon = { icon = '󰕮' } },
           { '<leader>st', group = 'toggles', icon = { icon = '󰔡' } },
+          { '<leader>sl', icon = { icon = '󰒲' } },
           -- Buffer
           {
             '<leader>b',
@@ -84,6 +85,8 @@ return {
       },
       -- Quit all
       { '<leader>qq', '<cmd>qa<cr>', desc = 'Quit all' },
+      -- Lazy.nvim
+      { '<leader>sl', '<cmd>Lazy<cr>', desc = 'open [l]azy' },
       -- Splits (no icon here -- icon is a which-key spec field, not valid in lazy keys)
       { '<leader>|', '<C-W>v', desc = 'Split right' },
       { '<leader>_', '<C-W>s', desc = 'Split below' },

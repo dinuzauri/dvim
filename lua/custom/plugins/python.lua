@@ -5,10 +5,6 @@
 return {
   {
     'neovim/nvim-lspconfig',
-    opts = function(_, opts)
-      -- Ensure we have the servers table
-      opts.servers = opts.servers or {}
-    end,
     config = function()
       -- ty: Astral type checker for Python
       vim.lsp.config('ty', {
@@ -35,13 +31,14 @@ return {
       })
       vim.lsp.enable 'ty'
 
-      -- ruff: Astral linter/formatter (linting only via LSP)
+      -- ruff: Astral linter/formatter; formatting runs through Conform.
       vim.lsp.config('ruff', {
         init_options = {
           settings = { logLevel = 'error' },
         },
         on_attach = function(client, _)
-          -- Disable non-linting capabilities (ruff is for linting only, formatting via conform)
+          -- Keep ty as the source of Python navigation and completion.
+          -- Conform invokes Ruff's CLI formatter rather than this LSP capability.
           client.server_capabilities.hoverProvider = false
           client.server_capabilities.definitionProvider = false
           client.server_capabilities.completionProvider = false
