@@ -1,12 +1,14 @@
 -- Custom autocommands
 
--- Django template file type detection
-vim.filetype.add {
-  pattern = {
-    ['.*/templates/.*%.html'] = 'htmldjango',
-    ['.*/templates/partials/.*%.html'] = 'htmldjango',
-  },
-}
+if require('custom.extras').is_enabled 'django' then
+  -- Django template file type detection
+  vim.filetype.add {
+    pattern = {
+      ['.*/templates/.*%.html'] = 'htmldjango',
+      ['.*/templates/partials/.*%.html'] = 'htmldjango',
+    },
+  }
+end
 
 -- Autosave on InsertLeave and TextChanged
 vim.api.nvim_create_autocmd({ 'InsertLeave', 'TextChanged' }, {

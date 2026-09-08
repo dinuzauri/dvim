@@ -6,6 +6,8 @@ return {
   {
     'neovim/nvim-lspconfig',
     config = function()
+      if not require('custom.extras').is_enabled 'python' then return end
+
       -- ty: Astral type checker for Python
       vim.lsp.config('ty', {
         init_options = {
@@ -46,17 +48,6 @@ return {
         end,
       })
       vim.lsp.enable 'ruff'
-    end,
-  },
-  -- Ensure Mason installs the tools
-  {
-    'WhoIsSethDaniel/mason-tool-installer.nvim',
-    opts = function(_, opts)
-      opts.ensure_installed = opts.ensure_installed or {}
-      vim.list_extend(opts.ensure_installed, {
-        'ty',
-        'ruff',
-      })
     end,
   },
 }

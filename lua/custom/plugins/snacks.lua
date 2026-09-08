@@ -47,6 +47,34 @@ return {
       words = { enabled = true },
       lazygit = { enabled = true },
     },
+    config = function(_, opts)
+      local snacks = require 'snacks'
+      snacks.setup(opts)
+
+      local extras = require 'custom.extras'
+      for profile, name in pairs {
+        python = 'Python extra',
+        django = 'Django extra',
+        web = 'Web extra',
+        http = 'HTTP extra',
+      } do
+        snacks.toggle({
+          id = 'extra_' .. profile,
+          name = name,
+          get = function() return extras.is_enabled(profile) end,
+          set = function(state) extras.set(profile, state) end,
+          notify = false,
+        }):map('<leader>se' .. profile:sub(1, 1))
+      end
+
+      vim.api.nvim_create_autocmd('WinEnter', {
+        group = vim.api.nvim_create_augroup('dvim-explorer-stopinsert', { clear = true }),
+        callback = function()
+          local explorer = Snacks.picker.get({ source = 'explorer' })[1]
+          if explorer and explorer.list.win.win == vim.api.nvim_get_current_win() then vim.cmd 'stopinsert' end
+        end,
+      })
+    end,
     keys = {
       -- Explorer
       { '<leader>e', function() Snacks.explorer() end, desc = '[e]xplorer' },

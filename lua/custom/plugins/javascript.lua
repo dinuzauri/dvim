@@ -7,6 +7,8 @@ return {
   {
     'neovim/nvim-lspconfig',
     config = function()
+      if not require('custom.extras').is_enabled 'web' then return end
+
       vim.lsp.config('vtsls', {
         settings = {
           typescript = {
@@ -26,18 +28,6 @@ return {
         },
       })
       vim.lsp.enable 'vtsls'
-    end,
-  },
-  -- Ensure Mason installs the tools
-  {
-    'WhoIsSethDaniel/mason-tool-installer.nvim',
-    opts = function(_, opts)
-      opts.ensure_installed = opts.ensure_installed or {}
-      vim.list_extend(opts.ensure_installed, {
-        'vtsls',
-        'prettierd',
-        'prettier',
-      })
     end,
   },
   -- Additional treesitter parsers for web development

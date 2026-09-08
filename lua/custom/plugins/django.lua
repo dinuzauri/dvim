@@ -7,21 +7,12 @@ return {
   {
     'neovim/nvim-lspconfig',
     config = function()
+      if not require('custom.extras').is_enabled 'django' then return end
+
       vim.lsp.config('django_template_lsp', {
         filetypes = { 'htmldjango' },
       })
       vim.lsp.enable 'django_template_lsp'
-    end,
-  },
-  -- Ensure Mason installs django tools
-  {
-    'WhoIsSethDaniel/mason-tool-installer.nvim',
-    opts = function(_, opts)
-      opts.ensure_installed = opts.ensure_installed or {}
-      vim.list_extend(opts.ensure_installed, {
-        'django-template-lsp',
-        'djlint',
-      })
     end,
   },
 }

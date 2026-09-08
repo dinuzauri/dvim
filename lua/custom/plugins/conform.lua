@@ -52,16 +52,23 @@ return {
       -- Lua: stylua
       opts.formatters_by_ft.lua = { 'stylua' }
 
-      -- Python: ruff fix, format, organize imports
-      opts.formatters_by_ft.python = { 'ruff_fix', 'ruff_format', 'ruff_organize_imports' }
+      local extras = require 'custom.extras'
+      if extras.is_enabled 'python' then
+        -- Python: ruff fix, format, organize imports
+        opts.formatters_by_ft.python = { 'ruff_fix', 'ruff_format', 'ruff_organize_imports' }
+      end
 
-      -- Django templates: djlint
-      opts.formatters_by_ft.htmldjango = { 'djlint' }
+      if extras.is_enabled 'django' then
+        -- Django templates: djlint
+        opts.formatters_by_ft.htmldjango = { 'djlint' }
+      end
 
-      -- JavaScript/TypeScript/Web + YAML/Markdown: prettier
-      local prettier_fts = { 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'html', 'css', 'json', 'yaml', 'markdown' }
-      for _, ft in ipairs(prettier_fts) do
-        opts.formatters_by_ft[ft] = { 'prettierd', 'prettier', stop_after_first = true }
+      if extras.is_enabled 'web' then
+        -- JavaScript/TypeScript/Web + YAML/Markdown: prettier
+        local prettier_fts = { 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'html', 'css', 'json', 'yaml', 'markdown' }
+        for _, ft in ipairs(prettier_fts) do
+          opts.formatters_by_ft[ft] = { 'prettierd', 'prettier', stop_after_first = true }
+        end
       end
 
       -- Autoformat on save: respects vim.g.autoformat / vim.b.autoformat

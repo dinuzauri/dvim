@@ -5,6 +5,7 @@
 return {
   {
     'mistweaverco/kulala.nvim',
+    enabled = require('custom.extras').is_enabled 'http',
     ft = 'http',
     opts = {
       display_mode = 'split',

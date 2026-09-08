@@ -33,6 +33,8 @@ return {
           { '<leader>tr', group = 'REST', icon = { icon = '' } },
           -- Settings
           { '<leader>s', group = 'settings', icon = { icon = '' } },
+          { '<leader>se', group = 'extras', icon = { icon = '󰏗' } },
+          { '<leader>sm', group = 'mason', icon = { icon = '󱌣' } },
           { '<leader>su', group = 'ui', icon = { icon = '󰕮' } },
           { '<leader>st', group = 'toggles', icon = { icon = '󰔡' } },
           { '<leader>sl', icon = { icon = '󰒲' } },
@@ -85,11 +87,16 @@ return {
       },
       -- Quit all
       { '<leader>qq', '<cmd>qa<cr>', desc = 'Quit all' },
+      -- Mason
+      { '<leader>smm', '<cmd>Mason<cr>', desc = 'open [m]ason' },
+      { '<leader>smi', '<cmd>MasonToolsInstall<cr>', desc = '[i]nstall configured tools' },
+      { '<leader>smu', '<cmd>MasonToolsUpdate<cr>', desc = '[u]pdate configured tools' },
+      { '<leader>smc', '<cmd>MasonToolsClean<cr>', desc = '[c]lean unconfigured tools' },
       -- Lazy.nvim
       { '<leader>sl', '<cmd>Lazy<cr>', desc = 'open [l]azy' },
       -- Splits (no icon here -- icon is a which-key spec field, not valid in lazy keys)
-      { '<leader>|', '<C-W>v', desc = 'Split right' },
-      { '<leader>_', '<C-W>s', desc = 'Split below' },
+      { '<leader>|', '<C-W>v', desc = 'split right' },
+      { '<leader>_', '<C-W>s', desc = 'split below' },
     },
   },
 }
